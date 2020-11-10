@@ -16,10 +16,12 @@ html {
 /* Sections
    ========================================================================== */
 
+th{
+    text-align: center;
+}
 /**
  * Remove the margin in all browsers.
  */
-
 body {
   margin: 0;
 }
@@ -9673,6 +9675,7 @@ video {
 
 .table {
   display: table;
+  text-align: center;
 }
 
 .table-caption {

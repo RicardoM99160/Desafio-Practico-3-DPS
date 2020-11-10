@@ -17,7 +17,7 @@ function Application() {
   console.log(" Usuario Application : " + user);
 
   return (
-    user ? <ProfilePage />  // true
+    user ? <ProfilePage  /> // true
       : // false
       <Router> 
           <SignIn path="/" />
