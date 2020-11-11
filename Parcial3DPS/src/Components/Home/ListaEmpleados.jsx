@@ -1,9 +1,10 @@
 import React from "react"
 
 const ListaEmpleados = () => (
-    <React.Fragment> 
-        <p>Lista de empleados</p>
-        <p></p>
-    </React.Fragment>
+  <React.Fragment>
+    <p><h1>acá va la lista de empleados </h1></p>
+  </React.Fragment>
 )
+
+
 export default ListaEmpleados
