@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { firestore } from "../../firebase";
 
-const CalcularSalario = () => {
+const ListaInicio = () => {
     const [idList, List] = useState([]);
     const [max, setMax] = useState("");
     const [min, setMin] = useState("");
@@ -36,7 +36,7 @@ const CalcularSalario = () => {
                     let descuentos = isss + afp + renta;
                     let neto = salario_base -  descuentos;
                     console.log(user.data().displayName);
-                    users.push({...user.data(), id: user.id, name: name, horas: horast, liquido: salario_base, neto: neto, isss: isss, afp: afp, renta: renta});
+                    users.push({...user.data(), id: user.id, name: name, horas: horast, neto: neto});
                 }else{
                     console.log("El usuario "+user.data().displayName+" no tiene un valor válido de horas.")
                 }
@@ -55,18 +55,13 @@ const CalcularSalario = () => {
 
     return(
         <div className="container-fluid">
-            <p>El usuario con el mayor salario es: <b>{max}</b></p>
-            <p>El usuario con el menor salario es: <b>{min}</b></p>
+            <h1><b>Usuarios registrados: </b></h1>
             <table className="table centered">
                 <thead className="thead-dark">
                     <tr>
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Horas trabajadas</th>
-                        <th>ISSS</th>
-                        <th>AFP</th>
-                        <th>Renta</th>
-                        <th>Sueldo líquido</th>
                         <th>Sueldo neto</th>
                     </tr>
                 </thead>
@@ -76,10 +71,6 @@ const CalcularSalario = () => {
                             <td>{User.id}</td>
                             <td>{User.name}</td>
                             <td>{User.horas_trabajadas}</td>
-                            <td>{User.isss}</td>
-                            <td>{User.afp}</td>
-                            <td>{User.renta}</td>
-                            <td>{User.liquido}</td>
                             <td>{User.neto}</td>
                         </tr>
                     ))}
@@ -89,4 +80,4 @@ const CalcularSalario = () => {
     )
 }
 
-export default CalcularSalario
+export default ListaInicio

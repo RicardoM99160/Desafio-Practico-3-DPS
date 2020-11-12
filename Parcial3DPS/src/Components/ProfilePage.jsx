@@ -4,8 +4,8 @@ import { auth } from "../firebase";
 import { Router, Link } from "@reach/router";
 
 import CalcularSalario from "./Home/CalcularSalario";
+import ListaInicio from "./Home/ListaInicio";
 import Crud from "./Home/Crud";
-import ListaEmpleados from "./Home/ListaEmpleados";
 
 const ProfilePage = () => {
 
@@ -25,20 +25,19 @@ const ProfilePage = () => {
             <nav className="navbar navbar-inverse">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="/">Parcial 3</a>
+                        <a className="navbar-brand">Parcial 3</a>
                     </div>
                     <ul className="nav navbar-nav">
                         <li className="active"><Link to="/">Inicio</Link></li>
-                        <li><Link to="listaEmpleados">Lista de empleados</Link></li>
-                        <li><Link to="crud">Modificar empleado</Link></li>
-                        <li><Link to="calcularSalario">Calcular salario</Link></li>
+                        <li><Link to="crud">Administrar empleados</Link></li>
+                        <li><Link to="calcularSalario">Cálculo de salario</Link></li>
                         <button className="btn btn-danger" onClick={() => { signOut() }}>
                             Sign out</button>
                     </ul>
                 </div>
             </nav>
             <Router>
-                <ListaEmpleados exact path="listaEmpleados" />
+                <ListaInicio exact path="/" />
                 <Crud exact path="crud" />
                 <CalcularSalario exact path="calcularSalario" />
             </Router>
