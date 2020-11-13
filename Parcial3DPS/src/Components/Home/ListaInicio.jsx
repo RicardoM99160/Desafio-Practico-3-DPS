@@ -16,11 +16,14 @@ const ListaInicio = () => {
                 let restantes = 0;
                 if(horast > 0){
                     if(horast <= 160){
-                        salario_base = 160 * 9.75;
+                        salario_base = horast * 9.75;
                     }else if(horast > 160 && horast <= 200){
                         restantes = horast - 160;
                         salario_base = (160 * 9.75) + (restantes * 11.50);
                     }else if(horast > 200 && horast <= 250){
+                        restantes = horast - 200;
+                        salario_base = (160 * 9.75) + (40 * 11.50) + (restantes * 12.50)
+                    }else if(horast > 250){
                         restantes = horast - 200;
                         salario_base = (160 * 9.75) + (40 * 11.50) + (restantes * 12.50)
                     }else{
@@ -36,12 +39,12 @@ const ListaInicio = () => {
                     let descuentos = isss + afp + renta;
                     let neto = salario_base -  descuentos;
                     console.log(user.data().displayName);
-                    users.push({...user.data(), id: user.id, name: name, horas: horast, neto: neto});
+                    users.push({...user.data(), id: user.id, name: name, horas: horast, liquido: salario_base, neto: neto, isss: isss, afp: afp, renta: renta});
                 }else{
                     console.log("El usuario "+user.data().displayName+" no tiene un valor válido de horas.")
                 }
             });
-            users.sort((a, b) => (a.salario_base > b.salario_base) ? -1 : 1);
+            users.sort((a, b) => (a.neto > b.neto) ? -1 : 1);
             let len = users.length;
             List(users);
             setMax(users[0].displayName);

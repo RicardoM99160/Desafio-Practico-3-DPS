@@ -23,6 +23,9 @@ const CalcularSalario = () => {
                     }else if(horast > 200 && horast <= 250){
                         restantes = horast - 200;
                         salario_base = (160 * 9.75) + (40 * 11.50) + (restantes * 12.50)
+                    }else if(horast > 250){
+                        restantes = horast - 200;
+                        salario_base = (160 * 9.75) + (40 * 11.50) + (restantes * 12.50)
                     }else{
                         console.log("Se encontró un error");
                     }
@@ -41,7 +44,7 @@ const CalcularSalario = () => {
                     console.log("El usuario "+user.data().displayName+" no tiene un valor válido de horas.")
                 }
             });
-            users.sort((a, b) => (a.salario_base > b.salario_base) ? -1 : 1);
+            users.sort((a, b) => (a.neto > b.neto) ? -1 : 1);
             let len = users.length;
             List(users);
             setMax(users[0].displayName);
